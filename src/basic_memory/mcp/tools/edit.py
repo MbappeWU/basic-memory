@@ -248,7 +248,7 @@ def _edit_refusal(error: ToolError, file_path: str, output_format: OutputFormat)
         )
     return refusal(
         refused.code,
-        f"{refused.message} Nothing was changed.",
+        refused.with_outcome("Nothing was changed."),
         try_instead=f"bm_read(identifier='{file_path}') to see the note as it is",
         output_format=output_format,
     )

@@ -301,7 +301,7 @@ def _write_failure(error: ToolError, file_path: str, output_format: OutputFormat
             output_format=output_format,
         )
     return refusal(
-        refused.code, f"{refused.message} Nothing was written.", output_format=output_format
+        refused.code, refused.with_outcome("Nothing was written."), output_format=output_format
     )
 
 

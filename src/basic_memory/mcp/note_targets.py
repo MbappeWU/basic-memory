@@ -169,6 +169,12 @@ def _requalified_path(value: str, prefix: str) -> str:
     return f"{prefix}/{value}" if value else prefix
 
 
+def qualify_path(value: str, route: ProjectPathRoute) -> str:
+    """Re-qualify one project-relative path the way the request addressed its project."""
+    prefix = _route_prefix(route)
+    return value if prefix is None else _requalified_path(value, prefix)
+
+
 def qualify_note_paths(payload: dict[str, Any], route: ProjectPathRoute) -> dict[str, Any]:
     """Re-qualify a note payload's transport path.
 
